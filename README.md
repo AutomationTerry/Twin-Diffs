@@ -17,12 +17,6 @@
 - We implement an initial version of Twin-Diffs on diffusers.
 - Data, weights, and a more detailed document are coming.
 
-### Quantities of Results.
-
-<p align="center" width="100%">
-<img src="example/result.png"  width="100%" >
-</p>
-
 
 ### Getting Started
 Twin-Diffs can be trained with only 8 A100 GPUs. The code is tested on torch 2.0.0 and cuda 11.8. Data and weights will be uploaded to [here](https://drive.google.com/drive/folders/1bfszAMyQgVFs6JGA1pIlPz_ym-kB_rrI?usp=sharing).
@@ -36,6 +30,13 @@ pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git@v1.4.0
 pip install imageio trimesh tqdm matplotlib torch_scatter ninja einops
 pip install -r requirements.txt
 ```
+### Quantities of Results.
+
+<p align="center" width="100%">
+<img src="example/result.png"  width="100%" >
+</p>
+
+
 
 ### Train 
 We provide a sh file for training. Please modify parameters and gpus in it.
