@@ -26,7 +26,7 @@
 
 
 ### Getting Started
-Twin-Diffs can be trained with only 8 A100 GPUs.The code is tested on torch 2.0.0 and cuda 11.8. Data and weights will be uploaded to [here](https://drive.google.com/drive/folders/1bfszAMyQgVFs6JGA1pIlPz_ym-kB_rrI?usp=sharing).
+Twin-Diffs can be trained with only 8 A100 GPUs. The code is tested on torch 2.0.0 and cuda 11.8. Data and weights will be uploaded to [here](https://drive.google.com/drive/folders/1bfszAMyQgVFs6JGA1pIlPz_ym-kB_rrI?usp=sharing).
 ```sh
 # cuda 11.8 torch 2.0.0 diffusers origin 0.18.0.dev0
 pip install -e ".[torch]"
