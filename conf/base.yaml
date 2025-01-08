@@ -1,0 +1,119 @@
+config_name: train 
+device: cuda
+batch_size: 1
+max_steps: 10000 
+num_epochs: 5
+mode: text_to_3d
+huggingface_offline: True
+output_dir: outputs
+logging_dir: logs
+seed: 42
+weight_dtype: torch.float16
+push_to_hub: False
+hub_model_id: TwinDiffusion
+#hub_token: None
+#revision: None
+#negative_prompt: None
+time_embedding_type: positional
+gradient_accumulation_steps: 1
+tile_size: 16
+T_threshold: 0.0001
+rgb_only: False
+num_points: 32768
+#resume_from_checkpoint: checkpoint-3 
+tile_culling_radius: 6.0
+frustum_culling_radius: 6.0
+near_plane: 0.01
+far_plane: 100.0
+num_save: 1000
+
+#mixed_precision: fp16
+report_to : tensorboard
+#dataset:
+  #root:
+
+data:
+  root: twin-diffusions/data/objaverse_5k_prompt 
+  pcd_root: twin-diffusions/data/render_out
+  gs_attribute_root: twin-diffusions/data/gs_attribute
+  instance_file: twin-diffusions/data/test.txt 
+  invalid_file: twin-diffusions/data/invalid.txt 
+  invalid_file_2d: twin-diffusions/data/invalid_2d.txt 
+  camera_info: twin-diffusions/data/render_out 
+  multi_view_file: twin-diffusions/data/render_out
+  images_file: twin-diffusions/data/multi_view
+  #mvlatent_file: data/latent.npy
+  #depth_file: None
+  #normal_file: None
+  #refer_img_file: None
+  image_size: 512 #1024
+  elevation: 30
+  multi_views: 8
+  camera_distance: 2.0
+  #light_direction: [0.09387503, -0.63953443, -0.7630093]
+  number_of_points: 8192
+  rebuild: False
+  mean_std: 0.8
+  svec_value: 0.02
+  alpha_value: 0.8
+  facex: True
+  z_scale: 1.0
+  lr_warmup: 500
+  lr_cycle: 1
+  depth_detach: True
+
+
+prompt:
+  root: twin-diffusions/data/prompt/prompt_test.csv
+  instance_file: ${data.instance_file}
+  invalid_file_pm: twin-diffusions/data/invalid_pm.txt
+  rebuild: False
+  max_length: 77
+  text_embedding_root: twin-diffusions/data/prompt/text_embedding
+  
+background:
+  config_name: train
+  device: cuda
+  type: random
+  random_augmentation: False
+  random_augmentation_prob: 0.0
+  #range:
+  #- 0.0
+  #- 1.0
+
+
+model:
+  name: stable diffusion v1.5
+  root: runwayml/stable-diffusion-v1-5
+  rebulid: True
+  #twin_diffusions_path: None
+  use_view_embedding: False
+  use_class_embedding: False
+  use_additional_embedding: False
+  use_controlnet_embbeding: False
+  svec_activation: exp
+  alpha_activation: sigmoid
+  color_activation: sigmoid
+  densify_enabled: False
+  guidance_scale: 100
+  use_3d_guidance: True
+  num_heads: 8
+  num_points: 8192
+  weight_2d: 0.5
+  weight_3d: 0.5
+  cycle: 1000
+  checkpoint_global_step: 
+  sample: random
+  densify: False
+  warm_up: 2000
+  end: 9999
+  mean2d_threshold: 0.02
+  split_threshold: 0.02
+  split_shrink: 0.8
+  radii2d_threshold: 1000
+  alpha_threshold: 1000
+
+
+
+
+
