@@ -9,7 +9,6 @@
 - [x] Implement Twin-Diffs on [diffusers](https://github.com/huggingface/diffusers) (training && inference).
 - [x] Release the results.
 - [ ] Release the weights trained on Blast Furnace Burden Surface Dataset.
-- [ ] Release the processed training data.
 - [ ] Release the data processing scripts.
 - [ ] Hugging Face live demo.
 
